@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan jQuery - Karakter Database</title>
+    
+    <!-- Memuat jQuery dari CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Gaya tambahan khusus untuk animasi gerak */
+        #animate-container {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            background-color: #374151; /* gray-700 */
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        #animate-box {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans p-4 md:p-8 min-h-screen">
+
+<div class="max-w-4xl mx-auto space-y-8">
+    
+    <header class="border-b border-gray-700 pb-4">
+        <h1 class="text-3xl font-bold text-white tracking-tight">Tugas Perintah JQuery</h1>
+        <p class="text-gray-400 mt-2">Annisa Azzahra Anggoro - 2507411049 - TI2B</p>
+    </header>
+
+    <!-- 1. JQuery Hide/Show -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+        <h2 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">1. Hide / Show & Toggle</h2>
+        <div class="flex flex-wrap gap-2 mb-4">
+            <button id="btn-hide" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Sembunyikan</button>
+            <button id="btn-show" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Tampilkan</button>
+            <button id="btn-toggle" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Toggle</button>
+        </div>
+        <div id="spoiler-box" class="bg-gray-700 p-4 rounded-lg border-l-4 border-indigo-500 mt-2">
+            <p class="text-red-400 font-bold">Halo Perkenalkan!</p>
+            <p class="mt-1">Nama saya Annisa Azzahra Anggoro, Saya mahasiswa TIK</p>
+        </div>
+    </div>
+
+    <!-- 2. JQuery Fade -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+        <h2 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">2. Fade Effects</h2>
+        <div class="flex flex-wrap gap-2 mb-4">
+            <button id="btn-fade-out" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Fade Out</button>
+            <button id="btn-fade-in" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Fade In</button>
+            <button id="btn-fade-to" class="bg-teal-800 hover:bg-teal-900 text-white px-4 py-2 rounded-lg font-medium transition-colors">Fade To (50%)</button>
+        </div>
+        <div id="fade-box" class="bg-gray-700 p-4 rounded-lg border-l-4 border-teal-500 mt-2">
+            <p>Life is Fun, but Living is Better ay?!</p>
+        </div>
+    </div>
+
+    <!-- 3. JQuery Slide -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+        <h2 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">3. Slide Effects</h2>
+        <button id="btn-slide-toggle" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-medium transition-colors mb-4 w-full sm:w-auto">Buka/Tutup Slide Toggle</button>
+        <div id="slide-box" class="bg-gray-700 p-4 rounded-lg border-l-4 border-amber-500 mt-2 hidden">
+            <ul class="list-disc list-inside space-y-1">
+                <li><span class="font-semibold text-gray-300">MBTI :</span> <span class="text-amber-400 font-bold">ENTP</span></li>
+                <li><span class="font-semibold text-gray-300">Golongan Darah :</span> <span class="text-amber-400 font-bold">A</span></li>
+                <li><span class="font-semibold text-gray-300">Umur :</span> <span class="text-amber-400 font-bold">20</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 4. JQuery Animate & Stop -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+        <h2 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">4. Animate & Stop</h2>
+        <div class="flex flex-wrap gap-2">
+            <button id="btn-animate" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Mulai Animasi Gerak</button>
+            <button id="btn-stop" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Stop Animasi!</button>
+            <button id="btn-reset-animate" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Reset Posisi</button>
+        </div>
+        <div id="animate-container">
+            <div id="animate-box" class="bg-purple-500 w-16 h-16 rounded-xl shadow-lg flex items-center justify-center text-xs font-bold">Objek</div>
+        </div>
+    </div>
+
+    <!-- 5. JQuery Callback -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 relative">
+        <h2 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">5. Callback Functions</h2>
+        <button id="btn-callback" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg font-medium transition-colors mb-4">Hapus Data Simulasi</button>
+        
+        <div id="callback-box" class="bg-gray-700 p-4 rounded-lg border-l-4 border-rose-500 mt-2">
+            <p>Data ini akan menghilang perlahan. Sistem akan memunculkan pesan <span class="italic">hanya setelah</span> proses benar-benar selesai (Callback).</p>
+        </div>
+        
+        <!-- Box Notifikasi Pengganti Alert -->
+        <div id="notification-box" class="hidden mt-4 bg-green-900/50 border border-green-500 text-green-300 px-4 py-3 rounded-lg flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span>Sistem: Data berhasil dihapus sepenuhnya via Callback!</span>
+        </div>
+        <button id="btn-reset-callback" class="hidden mt-2 text-sm text-gray-400 hover:text-white underline">Reset Data</button>
+    </div>
+
+    <!-- 6. JQuery Chaining -->
+    <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
+        <h2 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">6. Chaining (Rantai Perintah)</h2>
+        <button id="btn-chain" class="bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded-lg font-medium transition-colors mb-4">Eksekusi Combo Visual</button>
+        <div id="chain-box" class="bg-gray-700 p-4 rounded-lg border-l-4 border-fuchsia-500 mt-2">
+            <p class="chain-text">(Warna -> SlideUp -> SlideDown -> Fade).</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+    // 1. Hide, Show, Toggle
+    $("#btn-hide").click(function(){
+        $("#spoiler-box").hide("fast");
+    });
+    $("#btn-show").click(function(){
+        $("#spoiler-box").show("slow");
+    });
+    $("#btn-toggle").click(function(){
+        $("#spoiler-box").toggle(500);
+    });
+
+    // 2. Fade Effects
+    $("#btn-fade-out").click(function(){
+        $("#fade-box").fadeOut();
+    });
+    $("#btn-fade-in").click(function(){
+        $("#fade-box").fadeIn();
+    });
+    $("#btn-fade-to").click(function(){
+        $("#fade-box").fadeTo("slow", 0.3); 
+    });
+
+    // 3. Slide Effects
+    $("#btn-slide-toggle").click(function(){
+        $("#slide-box").slideToggle("slow");
+    });
+
+    // 4. Animate & Stop
+    $("#btn-animate").click(function(){
+        // Menghitung batas kanan agar tidak keluar box
+        let containerWidth = $("#animate-container").width();
+        let boxWidth = $("#animate-box").width();
+        let moveDistance = containerWidth - boxWidth - 20; // 20px padding
+
+        $("#animate-box").animate({
+            left: moveDistance + 'px',
+            opacity: '0.6',
+            height: '100px',
+            width: '100px',
+            borderRadius: '50%'
+        }, 3000); // Durasi 3 detik
+    });
+    
+    $("#btn-stop").click(function(){
+        $("#animate-box").stop(); // Menghentikan animasi di posisi saat ini
+    });
+
+    $("#btn-reset-animate").click(function(){
+        // Reset animasi dengan instan tanpa durasi
+        $("#animate-box").stop(true, true).css({
+            left: '10px',
+            opacity: '1',
+            height: '64px',
+            width: '64px',
+            borderRadius: '0.75rem' // tailwind xl
+        });
+    });
+
+    // 5. Callback Function
+    $("#btn-callback").click(function(){
+        // Sembunyikan notifikasi jika masih ada
+        $("#notification-box").hide(); 
+        
+        $("#callback-box").slideUp("slow", function(){
+            // Fungsi Callback ini dieksekusi SETELAH slideUp selesai 100%
+            $("#notification-box").fadeIn("fast");
+            $("#btn-reset-callback").fadeIn("fast");
+        });
+    });
+
+    $("#btn-reset-callback").click(function(){
+        $("#notification-box").hide();
+        $(this).hide();
+        $("#callback-box").slideDown("fast");
+    });
+
+    // 6. Chaining
+    $("#btn-chain").click(function(){
+        // Chaining: Menggabungkan beberapa method dalam satu baris untuk elemen yang sama
+        $("#chain-box")
+            .css({
+                "background-color": "#4a044e", // fuchsia-900
+                "border-color": "#f0abfc", // fuchsia-300
+            })
+            .slideUp(800)
+            .slideDown(800)
+            .fadeOut(400)
+            .fadeIn(400, function() {
+                // Kembalikan style setelah animasi selesai
+                $(this).css({
+                    "background-color": "",
+                    "border-color": ""
+                });
+            });
+    });
+
+});
+</script>
+
+</body>
+</html>
